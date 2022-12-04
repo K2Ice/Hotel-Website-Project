@@ -6,9 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Website</title>
+    <script src="https://kit.fontawesome.com/62974ef814.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/css/style.css">
 </head>
 
-<body></body>
+<body>
+    <section id="header">
+        <nav id="navbar" class="navbar">
+            <div class="navbar__brand"><i class="fa-solid fa-hotel"></i>Gloritel</div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">Find Hotels<i class="fa-sharp fa-solid fa-chevron-down"></i></li>
+                <li class="navbar__item">Location</li>
+                <li class="navbar__item">About</li>
+                <li class="navbar__item">Contact</li>
+            </ul>
+            <button class="navbar__loginBtn">Login</button>
+        </nav>
+        <div class="container">
+            <div class="firstSection">
+                <div class="left-col">
+                    <h1>Find Most<br />Luxurious Hotels<br /> Across the Globe</h1>
+                    <div class="player-wrapper">
+                        <span class="text">Watch Demo Video</span>
+                        <span class="play"></span>
+                        <span class="circle"></span>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <form method="get" action="#">
+                        <div class="destination"><label for="destination">Where you go? <span class="error">Nie podano miejsca podróży</span>
+                            </label>
+                            <input type="text" name="destination" id="destination" placeholder='try "Pakistan"'></div>
+                        <div class="checkIn"><label for="checkInDate">Check in <span class="error">Nie wybrano daty</span></label>
+                            <div class="inputWrap">
+                                <input type="date" name="checkIn" id="checkInDate"></div>
+                        </div>
+                        <div class="checkOut">
+                            <label for="checkOutDate">Check out <span class="error">Nie wybrano daty</span></label>
+                            <div class="inputWrap">
+                                <input type="date" name="checkOut" id="checkOutDate"></div>
+                        </div>
+                        <div class="guests">
+                            <label for="guests">Guest <span class="error">Należy podać liczba gości. (Max 5 osób)</span>
+                            </label>
+                            <input type="number" name="guests" id="guests" min="0" max="5" placeholder="How many guests?"></div>
+                        <div class="payment"><input type="checkbox" name="payment" id="payment"><label for="payment">Pay when checking in?</label></div>
+                        <button class="button" type="submit">Search Hotels</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../src/js/index.js"></script>
+</body>
 
 </html>

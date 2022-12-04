@@ -1,0 +1,278 @@
+.container{
+  margin: 0 10vw;
+  max-width: 1000px;
+}
+
+#header{
+  position: relative;
+  font-size: 1.8rem;
+  padding-top: 1px;
+  margin-top: -1px;
+  background:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), no-repeat url(../pic/manor-house-gc0264a134_1280.jpg) center top / cover;
+  min-height: 100vh;
+}
+
+.navbar{
+  max-width: 1000px;
+  font-family: $mainFont;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgba(44, 44, 44, 0.7);
+
+  & > *:not(.navbar__brand){
+    margin: 10px;
+  }
+
+  &__brand{
+    background: rgba(27, 21, 21, 0.551);
+    text-align: center;
+    padding: 5px;
+  }
+  
+  @include mq(md){
+    flex-direction: row;
+    align-items: center;
+    padding-inline: 10px;
+
+    & > *{
+      margin: 0;
+    }
+
+    &__brand{
+      padding: 0;
+      background: transparent;
+    }
+  }
+  
+  i{
+    margin-inline: 5px;
+  }
+  
+
+  &__menu{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    gap: 0 20px;
+    flex-grow: 1;
+    margin: 10px;
+    @include mq(md){
+      flex-direction: row;
+      align-items: stretch;
+      margin-right: 30px;
+    }
+  }
+
+  &__item{
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.4s;
+
+    &:hover{
+      border-bottom-color: $btnColor
+    }
+  }
+
+  &__item > i{
+    margin-inline: 3px;
+  }
+  
+  &__loginBtn{
+    padding: 5px 20px;
+    background-color: $btnColor;
+    border-radius: 5px;
+    font-weight: bolder;
+  }
+}
+
+.firstSection{
+  margin-top: 70px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  @include mq(lg){
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: stretch;
+  }
+  //Heading and player section
+  .left-col{
+    line-height: 1.2;
+    margin-top: 30px;
+    font-size: 3.4rem;
+
+
+    //player button
+    .player-wrapper{
+      $circleSize: 70px;
+      margin-top: 10px;
+      position: relative;
+      span.text{
+        margin-left: 40px;
+        display: block;
+        width: max-content;
+        border-radius: 20px;
+        background-color: white;
+        font-size: 1.6rem;
+        padding: 10px 15px 10px 30px;
+        color: black;
+      }
+      .circle {
+        top: 50%;
+        left: 0;
+        position: absolute;
+        background-color: #fff;
+        width: $circleSize;
+        height: $circleSize;
+        border-radius: 100px;
+        transform: translateY(-50%);
+      }
+      
+      .play{
+        position: absolute;
+        left: $circleSize / 2 - 5px;
+        width: 32px;
+        height: 32px;
+        top: 3px;
+        left: 26px;
+        border: 0;
+        border-left: 30px solid #FDC463;
+        border-top: 16px solid transparent;
+        border-bottom: 16px solid transparent;
+        z-index: 2;
+      }
+    }
+  }
+  //Form section
+  .right-col{
+    margin-top: 30px;
+    min-width: min-content;
+    position: relative;
+    padding: 20px 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 20px rgba(255, 255, 255, .1);
+
+    @include mq(lg){
+      width: 35%;
+      margin: 0;
+    }
+
+    &::before{
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      // background-color: red;
+      backdrop-filter: blur(10px);
+      z-index: 1;
+    }
+
+    form{
+      position: relative;
+      z-index: 2;
+      display: grid;
+      column-gap: 20px;
+      row-gap: 10px;
+      grid-template-columns: repeat(2, minmax(120px , 1fr));
+      grid-template-areas: "destination  destination"
+                            "checkIn       checkOut"
+                            "guests         guests"
+                            "payment       payment"
+                            "button        button";
+
+
+      div>label, 
+      div>input{
+        display: block;
+        width: 100%;
+      }
+      div > label{
+        margin-bottom: 10px;
+        font-family: "Inter", sans-serif;
+      }
+
+      input[type='checkbox']{
+        position: relative;
+        appearance: none;
+        background-color: #fff;
+        overflow: hidden;
+        margin-right: 10px;
+
+        & + label{
+          margin: 0;
+          line-height: 100%;
+        }
+
+        &:checked:after{
+          content: '\2713';
+          font-size: 22px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          position: absolute;
+          color: $btnColor
+        }
+      }
+
+      input{
+        outline: none;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      div.destination{grid-area: destination;}
+      div.checkIn{grid-area: checkIn;}
+      div.checkOut{grid-area: checkOut;}
+      div.guests{grid-area: guests;}
+
+      div.payment{
+        grid-area: payment;
+        display: flex;
+        align-items: center;
+        input{
+          width: 20px;
+          vertical-align: middle;
+        }
+      }
+
+      button.button{
+        grid-area: button; 
+        background-color: $btnColor;
+        padding: 10px 15px;}
+    }
+  }
+}
+.modal-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.4);
+  backdrop-filter: blur(1px);
+  .modal{
+    padding: 0 20px;
+    width: 75vmax;
+    text-align: center;
+    height: auto;
+  }
+
+  iframe{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
