@@ -1,0 +1,11 @@
+$btnColor: #FDC463;
+$mainFont: 'Manrope', sans-serif;
+$main-font-size: 20px;
+
+$breakpoints: (
+  xs: (min-width: 320px),
+  sm: (min-width: 369px),
+  md: (min-width: 620px),
+  lg: (min-width: 900px),
+  xl: (min-width: 1280px),
+)

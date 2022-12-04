@@ -1,0 +1,11 @@
+@mixin mq($size){
+  $breakpoint: map-get($breakpoints, $size);
+  @if map-has-key($breakpoints, $size) == false {
+    @error 'There is no breakpoint as #{$size}'
+  }
+  @else{
+    @media #{$breakpoint}{
+      @content
+    }  
+  }
+}
